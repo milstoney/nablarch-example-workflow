@@ -102,9 +102,9 @@ public class ApprovalAction {
      * @return レスポンス
      */
     public HttpResponse show(final HttpRequest request, final ExecutionContext context) {
-        final String id = Arrays.stream(request.getParam("id"))
-                                .findFirst()
-                                .orElseThrow(() -> new HttpErrorResponse(404));
+        final Long id = Long.valueOf(Arrays.stream(request.getParam("id"))
+                                           .findFirst()
+                                           .orElseThrow(() -> new HttpErrorResponse(404)));
 
         final User user = SessionUtil.get(context, "user");
 

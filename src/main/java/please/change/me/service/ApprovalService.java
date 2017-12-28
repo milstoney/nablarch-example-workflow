@@ -110,7 +110,7 @@ public class ApprovalService {
      * @return ローン申請
      * @throws NotApprovalDataException 承認可能な申請データが存在しない場合
      */
-    public LoanApproval findLoanApplication(final String id, final User user) throws NotApprovalDataException {
+    public LoanApproval findLoanApplication(final Long id, final User user) throws NotApprovalDataException {
 
         final LoanApplication loanApplication = UniversalDao.findBySqlFile(
                 LoanApplication.class, "GET_LOAN_APPLICATION_WITH_LOCK", new Object[] {id});
