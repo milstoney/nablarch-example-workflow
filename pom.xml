@@ -23,8 +23,8 @@
     <nablarch.tools.dir>${project.basedir}/tools</nablarch.tools.dir>
     <user>workflow</user>
     <password>${user}</password>
-    <url>jdbc:h2:./h2/db/SAMPLE;AUTO_SERVER=TRUE</url>
-    <driver>org.h2.Driver</driver>
+    <url>jdbc:oracle:thin:@localhost:1521/xe</url>
+    <driver>oracle.jdbc.OracleDriver</driver>
   </properties>
 
   <!--
@@ -50,10 +50,9 @@
           <artifactId>nablarch-fw-web-hotdeploy</artifactId>
         </dependency>
         <dependency>
-          <groupId>com.h2database</groupId>
-          <artifactId>h2</artifactId>
-          <version>1.4.196</version>
-          <scope>runtime</scope>
+          <groupId>com.oracle</groupId>
+          <artifactId>ojdbc6</artifactId>
+          <version>11.2.0.4.0</version>
         </dependency>
         <dependency>
           <groupId>commons-dbcp</groupId>
@@ -228,25 +227,24 @@
         <version>4.3.0</version>
         <dependencies>
           <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.196</version>
-            <scope>runtime</scope>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.4.0</version>
           </dependency>
         </dependencies>
         <configuration>
           <driver>${driver}</driver>
           <url>${url}</url>
-          <adminUser>workflow</adminUser>
-          <adminPassword>workflow</adminPassword>
+          <adminUser>system</adminUser>
+          <adminPassword>oracle</adminPassword>
           <user>${user}</user>
           <password>${password}</password>
-          <erdFile>src/main/resources/entity/app.edm</erdFile>
-          <schema>PUBLIC</schema>
+          <erdFile>src/main/resources/entity/oracle.edm</erdFile>
           <useAccessor>true</useAccessor>
           <entityPackageName>entity</entityPackageName>
           <rootPackage>please.change.me</rootPackage>
           <dataDirectory>src/test/resources/data</dataDirectory>
+          <lengthSemantics>CHAR</lengthSemantics>
         </configuration>
         <executions>
           <execution>
@@ -277,10 +275,9 @@
         <version>1.5</version>
         <dependencies>
           <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.196</version>
-            <scope>runtime</scope>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.4.0</version>
           </dependency>
         </dependencies>
         <configuration>
