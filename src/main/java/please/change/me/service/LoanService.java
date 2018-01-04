@@ -49,7 +49,7 @@ public class LoanService {
         instance.assignGroup("UPPER_LEVEL_JUDGING", UPPER_LEVEL_JUDGING_GROUP_ID);
         
         // ローン申請登録
-        entity.setInsertDateTime(SystemTimeUtil.getDate());
+        entity.setInsertDateTime(SystemTimeUtil.getTimestamp());
         entity.setWfInstanceId(instance.getInstanceId());
         entity.setLoanAppliStatusCd(LoanApplicationStatus.CREATED.getValue());
         entity.setLoanAppliVersion(instance.getVersion());

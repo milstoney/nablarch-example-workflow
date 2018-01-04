@@ -22,9 +22,9 @@
     <!-- toolsディレクトリへのパス -->
     <nablarch.tools.dir>${project.basedir}/tools</nablarch.tools.dir>
     <user>workflow</user>
-    <password>${user}</password>
-    <url>jdbc:h2:./h2/db/SAMPLE;AUTO_SERVER=TRUE</url>
-    <driver>org.h2.Driver</driver>
+    <password>${user}_12345</password>
+    <url>jdbc:sqlserver://localhost:30000;database=nablarch;</url>
+    <driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver>
   </properties>
 
   <!--
@@ -50,10 +50,9 @@
           <artifactId>nablarch-fw-web-hotdeploy</artifactId>
         </dependency>
         <dependency>
-          <groupId>com.h2database</groupId>
-          <artifactId>h2</artifactId>
-          <version>1.4.196</version>
-          <scope>runtime</scope>
+          <groupId>com.microsoft</groupId>
+          <artifactId>sqljdbc4</artifactId>
+          <version>4.0</version>
         </dependency>
         <dependency>
           <groupId>commons-dbcp</groupId>
@@ -228,21 +227,20 @@
         <version>4.3.0</version>
         <dependencies>
           <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.196</version>
-            <scope>runtime</scope>
+            <groupId>com.microsoft</groupId>
+            <artifactId>sqljdbc4</artifactId>
+            <version>4.0</version>
           </dependency>
         </dependencies>
         <configuration>
           <driver>${driver}</driver>
           <url>${url}</url>
-          <adminUser>workflow</adminUser>
-          <adminPassword>workflow</adminPassword>
+          <adminUser>sa</adminUser>
+          <adminPassword>SApass123-</adminPassword>
           <user>${user}</user>
           <password>${password}</password>
-          <erdFile>src/main/resources/entity/app.edm</erdFile>
-          <schema>PUBLIC</schema>
+          <erdFile>src/main/resources/entity/sqlserver.edm</erdFile>
+          <schema>dbo</schema>
           <useAccessor>true</useAccessor>
           <entityPackageName>entity</entityPackageName>
           <rootPackage>please.change.me</rootPackage>
@@ -277,10 +275,9 @@
         <version>1.5</version>
         <dependencies>
           <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.196</version>
-            <scope>runtime</scope>
+            <groupId>com.microsoft</groupId>
+            <artifactId>sqljdbc4</artifactId>
+            <version>4.0</version>
           </dependency>
         </dependencies>
         <configuration>
@@ -288,6 +285,7 @@
           <url>${url}</url>
           <username>${user}</username>
           <password>${password}</password>
+          <onError>false</onError>
         </configuration>
         <executions>
           <execution>

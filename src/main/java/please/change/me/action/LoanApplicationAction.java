@@ -77,7 +77,7 @@ public class LoanApplicationAction {
         
         final User user = SessionUtil.get(context, "user");
         entity.setInsertUserId(user.getUserId());
-        entity.setInsertDateTime(SystemTimeUtil.getDate());
+        entity.setInsertDateTime(SystemTimeUtil.getTimestamp());
 
         final LoanService service = new LoanService();
         service.applyLoan(entity);

@@ -87,7 +87,7 @@ public class ApprovalService {
         history.setLoanAppliId(loanApplication.getLoanAppliId());
         history.setLoanAppliActionCd(LoanApplicationApplyStatus.AUTO_SCREENING.getValue());
         history.setExecutionerId(user.getUserId());
-        history.setExecutionDateTime(SystemTimeUtil.getDate());
+        history.setExecutionDateTime(SystemTimeUtil.getTimestamp());
 
         if (instance.isActive("SURVEY_TASK")) {
             // 調査タスクへ遷移した場合
@@ -363,7 +363,7 @@ public class ApprovalService {
         final LoanApplicationHistory history = new LoanApplicationHistory();
         history.setLoanAppliId(loan.getLoanAppliId());
         history.setExecutionerId(user.getUserId());
-        history.setExecutionDateTime(SystemTimeUtil.getDate());
+        history.setExecutionDateTime(SystemTimeUtil.getTimestamp());
         history.setHistoryComment(comment);
         UniversalDao.insert(changeHistory.apply(history));
     }
