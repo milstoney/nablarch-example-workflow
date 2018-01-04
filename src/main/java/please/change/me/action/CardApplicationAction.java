@@ -1,5 +1,16 @@
 package please.change.me.action;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import please.change.me.domain.code.CardApplicationStatus;
+import please.change.me.entity.CardApplication;
+import please.change.me.form.card.CardApplicationDto;
+import please.change.me.form.card.CardApplicationSearchForm;
+import please.change.me.form.card.NewCardForm;
+
 import nablarch.common.dao.UniversalDao;
 import nablarch.common.web.WebUtil;
 import nablarch.common.web.interceptor.InjectForm;
@@ -13,16 +24,6 @@ import nablarch.fw.web.HttpResponse;
 import nablarch.fw.web.interceptor.OnError;
 import nablarch.integration.workflow.WorkflowInstance;
 import nablarch.integration.workflow.WorkflowManager;
-import please.change.me.domain.code.CardApplicationStatus;
-import please.change.me.entity.CardApplication;
-import please.change.me.form.card.CardApplicationDto;
-import please.change.me.form.card.CardApplicationSearchForm;
-import please.change.me.form.card.NewCardForm;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * カード申し込みアクション。
@@ -44,7 +45,7 @@ public class CardApplicationAction {
                 UniversalDao.findAllBySqlFile(CardApplication.class,"LIST_CARD_APPLICATION")
                             .stream()
                             .map(cardApp -> new CardApplicationDto(
-                                    cardApp.getId(),
+                                    cardApp.getCardApplicationId(),
                                     cardApp.getName(),
                                     cardApp.getAnnualIncome(),
                                     CardApplicationStatus.valueOf(cardApp.getStatus())))
